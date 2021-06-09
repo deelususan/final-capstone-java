@@ -1,6 +1,7 @@
 package com.ecom.web.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +49,19 @@ public class ProductService {
 		return this.productrepository.save(findProduct);
 	}
 
-	// Delete a Product by Id 
+	// Update a Product
+	public Product updateMyProductById(Product prod) {
+
+		prod.setCusine(prod.getCusine());
+		prod.setName(prod.getName());
+		prod.setDesc(prod.getDesc());
+		prod.setPrice(prod.getPrice());
+
+		// Save Product
+		return this.productrepository.save(prod);
+	}
+
+	// Delete a Product by Id
 	public String deleteMyProductById(Long p_id) {
 
 		// Find product
@@ -60,4 +73,8 @@ public class ProductService {
 		return "Product is successfully deleted for " + p_id;
 	}
 
+	public Product getOneMyProduct(Long p_id) {
+		return productrepository.findById(p_id).orElse(null);
+
+	}
 }

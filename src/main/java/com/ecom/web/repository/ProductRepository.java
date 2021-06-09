@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ecom.web.entity.Product;
 
-public interface ProductRepository extends JpaRepository<Product,Long> {
-	
-	List<Product> findByCusine(String cusine);
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
+	List<Product> findByCusine(String cusine);
+//	List<Product> findById(Long p_id);
 }
